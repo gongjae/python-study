@@ -28,12 +28,13 @@ time.sleep(5)
 driver.get('https://www.instagram.com/explore/tags/%EC%82%AC%EA%B3%BC/')
 #첫번째 사진 누름
 time.sleep(5)
-e = driver.find_element(By.XPATH, '//*[@id="mount_0_0_eY"]/div/div/div[2]/div/div/div/div[1]/section/main/article/div/div/div/div[1]/div[2]/a/div[1]/div[1]/img').click()
+e = driver.find_element(By.CSS_SELECTOR, '._aagw')
+e.click()
 
 
 #사진 저장
 time.sleep(5)
-e = driver.find_element(By.XPATH,'/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div/div[2]').get_attribute('src')
+e = driver.find_element(By.CSS_SELECTOR, '.x5yr21d').get_attribute('src')
 time.sleep(5)
 urllib.request.urlretrieve(e,'1.jpg')
 time.sleep(20)
