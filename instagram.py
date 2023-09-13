@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By # html요소 탐색을 할 수 있�
 from selenium.webdriver.support.ui import WebDriverWait # 브라우저의 응답을 기다릴 수 있게 하기 위해
 from selenium.webdriver.support import expected_conditions as EC # html요소의 상태를 체크할 수 있게 하기 위해
 import time# 이 외에도 필요한 모듈이 있다면 따로 호출해준다.
-
+import urllib.request
 # 브라우저 꺼짐 방지 옵션
 #chrome_options = Options()
 #chrome_options.add_experimental_option("detach", True)
@@ -16,11 +16,24 @@ driver.get('https://instagram.com')
 
 
 time.sleep(3)
-i = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
-i.send_keys('아이디 입력')
-p = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
-p.send_keys('비밀번호 입력')
-l = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button')
-l.click()
+e = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[1]/div/label/input')
+e.send_keys('01020370937')
+e = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[2]/div/label/input')
+e.send_keys('@rudwo0937')
+e = driver.find_element(By.XPATH, '//*[@id="loginForm"]/div/div[3]/button')
+e.click()
 
-time.sleep(10)
+# 페이지이동
+time.sleep(5)
+driver.get('https://www.instagram.com/explore/tags/%EC%82%AC%EA%B3%BC/')
+#첫번째 사진 누름
+time.sleep(5)
+e = driver.find_element(By.XPATH, '//*[@id="mount_0_0_eY"]/div/div/div[2]/div/div/div/div[1]/section/main/article/div/div/div/div[1]/div[2]/a/div[1]/div[1]/img').click()
+
+
+#사진 저장
+time.sleep(5)
+e = driver.find_element(By.XPATH,'/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div/div[2]').get_attribute('src')
+time.sleep(5)
+urllib.request.urlretrieve(e,'1.jpg')
+time.sleep(20)
