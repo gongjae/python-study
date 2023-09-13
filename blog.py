@@ -17,13 +17,13 @@ driver.get('https://nid.naver.com/nidlogin.login?svctype=262144&url=http://m.nav
 
 
 time.sleep(5)
-pyperclip.copy('rudddong')
+pyperclip.copy('아이디')
 e = driver.find_element(By.XPATH, '//*[@id="id"]')
 e.send_keys(Keys.CONTROL,'v')
 
 time.sleep(1)
 
-pyperclip.copy('jung123!')
+pyperclip.copy('비밀번호')
 e = driver.find_element(By.XPATH, '//*[@id="pw"]')
 e.send_keys(Keys.CONTROL,'v')
 time.sleep(1)
